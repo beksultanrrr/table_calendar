@@ -18,15 +18,17 @@ class CellContent extends StatelessWidget {
   final bool isRangeEnd;
   final bool isWithinRange;
   final bool isOutside;
-  final bool isDisabled;
+
   final bool isHoliday;
   final bool isWeekend;
   final CalendarStyle calendarStyle;
   final CalendarBuilders calendarBuilders;
+  final List<DateTime> highlightedDates;
 
   const CellContent({
     Key? key,
     required this.day,
+    required this.highlightedDates,
     required this.focusedDay,
     required this.calendarStyle,
     required this.calendarBuilders,
@@ -37,7 +39,6 @@ class CellContent extends StatelessWidget {
     required this.isRangeEnd,
     required this.isWithinRange,
     required this.isOutside,
-    required this.isDisabled,
     required this.isHoliday,
     required this.isWeekend,
     this.locale,
@@ -49,8 +50,7 @@ class CellContent extends StatelessWidget {
     final dayLabel = DateFormat.yMMMMd(locale).format(day);
     final semanticsLabel = '$dowLabel, $dayLabel';
 
-    Widget? cell =
-        calendarBuilders.prioritizedBuilder?.call(context, day, focusedDay);
+    Widget? cell = calendarBuilders.prioritizedBuilder?.call(context, day, focusedDay);
 
     if (cell != null) {
       return Semantics(
@@ -65,18 +65,7 @@ class CellContent extends StatelessWidget {
     final padding = calendarStyle.cellPadding;
     final alignment = calendarStyle.cellAlignment;
     final duration = const Duration(milliseconds: 250);
-
-    if (isDisabled) {
-      cell = calendarBuilders.disabledBuilder?.call(context, day, focusedDay) ??
-          AnimatedContainer(
-            duration: duration,
-            margin: margin,
-            padding: padding,
-            decoration: calendarStyle.disabledDecoration,
-            alignment: alignment,
-            child: Text(text, style: calendarStyle.disabledTextStyle),
-          );
-    } else if (isSelected) {
+    if (isSelected) {
       cell = calendarBuilders.selectedBuilder?.call(context, day, focusedDay) ??
           AnimatedContainer(
             duration: duration,
@@ -86,17 +75,46 @@ class CellContent extends StatelessWidget {
             alignment: alignment,
             child: Text(text, style: calendarStyle.selectedTextStyle),
           );
+    } else if (highlightedDates.contains(day)) {
+      cell = AnimatedContainer(
+        duration: duration,
+        margin: margin,
+        padding: padding,
+        alignment: alignment,
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  text,
+                  style: calendarStyle.outsideTextStyle,
+                ),
+              ],
+            ),
+            Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xFF4B39EF)),
+                  width: 5,
+                  height: 5,
+                )),
+          ],
+        ),
+      );
     } else if (isRangeStart) {
-      cell =
-          calendarBuilders.rangeStartBuilder?.call(context, day, focusedDay) ??
-              AnimatedContainer(
-                duration: duration,
-                margin: margin,
-                padding: padding,
-                decoration: calendarStyle.rangeStartDecoration,
-                alignment: alignment,
-                child: Text(text, style: calendarStyle.rangeStartTextStyle),
-              );
+      cell = calendarBuilders.rangeStartBuilder?.call(context, day, focusedDay) ??
+          AnimatedContainer(
+            duration: duration,
+            margin: margin,
+            padding: padding,
+            decoration: calendarStyle.rangeStartDecoration,
+            alignment: alignment,
+            child: Text(text, style: calendarStyle.rangeStartTextStyle),
+          );
     } else if (isRangeEnd) {
       cell = calendarBuilders.rangeEndBuilder?.call(context, day, focusedDay) ??
           AnimatedContainer(
@@ -128,16 +146,15 @@ class CellContent extends StatelessWidget {
             child: Text(text, style: calendarStyle.holidayTextStyle),
           );
     } else if (isWithinRange) {
-      cell =
-          calendarBuilders.withinRangeBuilder?.call(context, day, focusedDay) ??
-              AnimatedContainer(
-                duration: duration,
-                margin: margin,
-                padding: padding,
-                decoration: calendarStyle.withinRangeDecoration,
-                alignment: alignment,
-                child: Text(text, style: calendarStyle.withinRangeTextStyle),
-              );
+      cell = calendarBuilders.withinRangeBuilder?.call(context, day, focusedDay) ??
+          AnimatedContainer(
+            duration: duration,
+            margin: margin,
+            padding: padding,
+            decoration: calendarStyle.withinRangeDecoration,
+            alignment: alignment,
+            child: Text(text, style: calendarStyle.withinRangeTextStyle),
+          );
     } else if (isOutside) {
       cell = calendarBuilders.outsideBuilder?.call(context, day, focusedDay) ??
           AnimatedContainer(
@@ -154,15 +171,11 @@ class CellContent extends StatelessWidget {
             duration: duration,
             margin: margin,
             padding: padding,
-            decoration: isWeekend
-                ? calendarStyle.weekendDecoration
-                : calendarStyle.defaultDecoration,
+            decoration: isWeekend ? calendarStyle.weekendDecoration : calendarStyle.defaultDecoration,
             alignment: alignment,
             child: Text(
               text,
-              style: isWeekend
-                  ? calendarStyle.weekendTextStyle
-                  : calendarStyle.defaultTextStyle,
+              style: isWeekend ? calendarStyle.weekendTextStyle : calendarStyle.defaultTextStyle,
             ),
           );
     }
@@ -174,3 +187,4 @@ class CellContent extends StatelessWidget {
     );
   }
 }
+
