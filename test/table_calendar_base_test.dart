@@ -21,13 +21,13 @@ void main() {
     testWidgets(
       'in month format, starting day is Sunday',
       (tester) async {
-        final focusedDay = DateTime.utc(2021, 7, 15);
+        final focusedDay = DateTime(2021, 7, 15);
 
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
-              firstDay: DateTime.utc(2021, 5, 15),
-              lastDay: DateTime.utc(2021, 8, 18),
+              firstDay: DateTime(2021, 5, 15),
+              lastDay: DateTime(2021, 8, 18),
               focusedDay: focusedDay,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
@@ -43,8 +43,8 @@ void main() {
           ),
         );
 
-        final firstVisibleDay = DateTime.utc(2021, 6, 27);
-        final lastVisibleDay = DateTime.utc(2021, 7, 31);
+        final firstVisibleDay = DateTime(2021, 6, 27);
+        final lastVisibleDay = DateTime(2021, 7, 31);
 
         final focusedDayKey = dateToKey(focusedDay);
         final firstVisibleDayKey = dateToKey(firstVisibleDay);
@@ -67,13 +67,13 @@ void main() {
     testWidgets(
       'in two weeks format, starting day is Sunday',
       (tester) async {
-        final focusedDay = DateTime.utc(2021, 7, 15);
+        final focusedDay = DateTime(2021, 7, 15);
 
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
-              firstDay: DateTime.utc(2021, 5, 15),
-              lastDay: DateTime.utc(2021, 8, 18),
+              firstDay: DateTime(2021, 5, 15),
+              lastDay: DateTime(2021, 8, 18),
               focusedDay: focusedDay,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
@@ -89,8 +89,8 @@ void main() {
           ),
         );
 
-        final firstVisibleDay = DateTime.utc(2021, 7, 4);
-        final lastVisibleDay = DateTime.utc(2021, 7, 17);
+        final firstVisibleDay = DateTime(2021, 7, 4);
+        final lastVisibleDay = DateTime(2021, 7, 17);
 
         final focusedDayKey = dateToKey(focusedDay);
         final firstVisibleDayKey = dateToKey(firstVisibleDay);
@@ -113,13 +113,13 @@ void main() {
     testWidgets(
       'in week format, starting day is Sunday',
       (tester) async {
-        final focusedDay = DateTime.utc(2021, 7, 15);
+        final focusedDay = DateTime(2021, 7, 15);
 
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
-              firstDay: DateTime.utc(2021, 5, 15),
-              lastDay: DateTime.utc(2021, 8, 18),
+              firstDay: DateTime(2021, 5, 15),
+              lastDay: DateTime(2021, 8, 18),
               focusedDay: focusedDay,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
@@ -135,8 +135,8 @@ void main() {
           ),
         );
 
-        final firstVisibleDay = DateTime.utc(2021, 7, 11);
-        final lastVisibleDay = DateTime.utc(2021, 7, 17);
+        final firstVisibleDay = DateTime(2021, 7, 11);
+        final lastVisibleDay = DateTime(2021, 7, 17);
 
         final focusedDayKey = dateToKey(focusedDay);
         final firstVisibleDayKey = dateToKey(firstVisibleDay);
@@ -159,13 +159,13 @@ void main() {
     testWidgets(
       'in month format, starting day is Monday',
       (tester) async {
-        final focusedDay = DateTime.utc(2021, 7, 15);
+        final focusedDay = DateTime(2021, 7, 15);
 
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
-              firstDay: DateTime.utc(2021, 5, 15),
-              lastDay: DateTime.utc(2021, 8, 18),
+              firstDay: DateTime(2021, 5, 15),
+              lastDay: DateTime(2021, 8, 18),
               focusedDay: focusedDay,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
@@ -181,8 +181,8 @@ void main() {
           ),
         );
 
-        final firstVisibleDay = DateTime.utc(2021, 6, 28);
-        final lastVisibleDay = DateTime.utc(2021, 8, 1);
+        final firstVisibleDay = DateTime(2021, 6, 28);
+        final lastVisibleDay = DateTime(2021, 8, 1);
 
         final focusedDayKey = dateToKey(focusedDay);
         final firstVisibleDayKey = dateToKey(firstVisibleDay);
@@ -205,13 +205,13 @@ void main() {
     testWidgets(
       'in two weeks format, starting day is Monday',
       (tester) async {
-        final focusedDay = DateTime.utc(2021, 7, 15);
+        final focusedDay = DateTime(2021, 7, 15);
 
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
-              firstDay: DateTime.utc(2021, 5, 15),
-              lastDay: DateTime.utc(2021, 8, 18),
+              firstDay: DateTime(2021, 5, 15),
+              lastDay: DateTime(2021, 8, 18),
               focusedDay: focusedDay,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
@@ -227,8 +227,8 @@ void main() {
           ),
         );
 
-        final firstVisibleDay = DateTime.utc(2021, 7, 5);
-        final lastVisibleDay = DateTime.utc(2021, 7, 18);
+        final firstVisibleDay = DateTime(2021, 7, 5);
+        final lastVisibleDay = DateTime(2021, 7, 18);
 
         final focusedDayKey = dateToKey(focusedDay);
         final firstVisibleDayKey = dateToKey(firstVisibleDay);
@@ -251,13 +251,13 @@ void main() {
     testWidgets(
       'in week format, starting day is Monday',
       (tester) async {
-        final focusedDay = DateTime.utc(2021, 7, 15);
+        final focusedDay = DateTime(2021, 7, 15);
 
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
-              firstDay: DateTime.utc(2021, 5, 15),
-              lastDay: DateTime.utc(2021, 8, 18),
+              firstDay: DateTime(2021, 5, 15),
+              lastDay: DateTime(2021, 8, 18),
               focusedDay: focusedDay,
               dayBuilder: (context, day, focusedDay) {
                 return Text(
@@ -273,8 +273,8 @@ void main() {
           ),
         );
 
-        final firstVisibleDay = DateTime.utc(2021, 7, 12);
-        final lastVisibleDay = DateTime.utc(2021, 7, 18);
+        final firstVisibleDay = DateTime(2021, 7, 12);
+        final lastVisibleDay = DateTime(2021, 7, 18);
 
         final focusedDayKey = dateToKey(focusedDay);
         final firstVisibleDayKey = dateToKey(firstVisibleDay);
@@ -298,7 +298,7 @@ void main() {
   testWidgets(
     'Callbacks return expected values',
     (tester) async {
-      DateTime focusedDay = DateTime.utc(2021, 7, 15);
+      DateTime focusedDay = DateTime(2021, 7, 15);
       final nextMonth = focusedDay.add(const Duration(days: 31)).month;
 
       bool calendarCreatedFlag = false;
@@ -307,8 +307,8 @@ void main() {
       await tester.pumpWidget(
         setupTestWidget(
           TableCalendarBase(
-            firstDay: DateTime.utc(2021, 5, 15),
-            lastDay: DateTime.utc(2021, 8, 18),
+            firstDay: DateTime(2021, 5, 15),
+            lastDay: DateTime(2021, 8, 18),
             focusedDay: focusedDay,
             dayBuilder: (context, day, focusedDay) {
               return Text(
@@ -358,9 +358,9 @@ void main() {
         await tester.pumpWidget(
           setupTestWidget(
             TableCalendarBase(
-              firstDay: DateTime.utc(2021, 5, 15),
-              lastDay: DateTime.utc(2021, 8, 18),
-              focusedDay: DateTime.utc(2021, 7, 15),
+              firstDay: DateTime(2021, 5, 15),
+              lastDay: DateTime(2021, 8, 18),
+              focusedDay: DateTime(2021, 7, 15),
               dayBuilder: (context, day, focusedDay) {
                 return Text(
                   '${day.day}',

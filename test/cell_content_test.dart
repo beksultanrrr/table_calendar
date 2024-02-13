@@ -55,7 +55,7 @@ void main() {
         },
       );
 
-      final cellDay = DateTime.utc(2021, 7, 15);
+      final cellDay = DateTime(2021, 7, 15);
       expect(builderDay, isNull);
 
       await tester.pumpWidget(
@@ -79,7 +79,7 @@ void main() {
         },
       );
 
-      final cellDay = DateTime.utc(2021, 7, 15);
+      final cellDay = DateTime(2021, 7, 15);
       expect(builderDay, isNull);
 
       await tester.pumpWidget(
@@ -103,7 +103,7 @@ void main() {
         },
       );
 
-      final cellDay = DateTime.utc(2021, 7, 15);
+      final cellDay = DateTime(2021, 7, 15);
       expect(builderDay, isNull);
 
       await tester.pumpWidget(
@@ -127,7 +127,7 @@ void main() {
         },
       );
 
-      final cellDay = DateTime.utc(2021, 7, 15);
+      final cellDay = DateTime(2021, 7, 15);
       expect(builderDay, isNull);
 
       await tester.pumpWidget(
@@ -151,7 +151,7 @@ void main() {
         },
       );
 
-      final cellDay = DateTime.utc(2021, 7, 15);
+      final cellDay = DateTime(2021, 7, 15);
       expect(builderDay, isNull);
 
       await tester.pumpWidget(
@@ -175,7 +175,7 @@ void main() {
         },
       );
 
-      final cellDay = DateTime.utc(2021, 7, 15);
+      final cellDay = DateTime(2021, 7, 15);
       expect(builderDay, isNull);
 
       await tester.pumpWidget(
@@ -199,7 +199,7 @@ void main() {
         },
       );
 
-      final cellDay = DateTime.utc(2021, 7, 15);
+      final cellDay = DateTime(2021, 7, 15);
       expect(builderDay, isNull);
 
       await tester.pumpWidget(
@@ -225,7 +225,7 @@ void main() {
           },
         );
 
-        final cellDay = DateTime.utc(2021, 7, 15);
+        final cellDay = DateTime(2021, 7, 15);
         expect(builderDay, isNull);
 
         await tester.pumpWidget(
@@ -258,7 +258,7 @@ void main() {
           },
         );
 
-        final cellDay = DateTime.utc(2021, 7, 15);
+        final cellDay = DateTime(2021, 7, 15);
         expect(builderDay, isNull);
 
         await tester.pumpWidget(
@@ -294,7 +294,7 @@ void main() {
           },
         );
 
-        final cellDay = DateTime.utc(2021, 7, 15);
+        final cellDay = DateTime(2021, 7, 15);
         expect(builderDay, isNull);
 
         await tester.pumpWidget(

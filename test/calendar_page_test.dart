@@ -14,15 +14,15 @@ Widget setupTestWidget(Widget child) {
 }
 
 List<DateTime> visibleDays = getDaysInRange(
-  DateTime.utc(2021, 6, 27),
-  DateTime.utc(2021, 7, 31),
+  DateTime(2021, 6, 27),
+  DateTime(2021, 7, 31),
 );
 
 List<DateTime> getDaysInRange(DateTime first, DateTime last) {
   final dayCount = last.difference(first).inDays + 1;
   return List.generate(
     dayCount,
-    (index) => DateTime.utc(first.year, first.month, first.day + index),
+    (index) => DateTime(first.year, first.month, first.day + index),
   );
 }
 
@@ -148,5 +148,4 @@ void main() {
       );
     },
   );
-
 }

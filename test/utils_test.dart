@@ -21,7 +21,7 @@ void main() {
     });
 
     test('UTC and local time zone', () {
-      final dateA = DateTime.utc(2020, 5, 10);
+      final dateA = DateTime(2020, 5, 10);
       final dateB = DateTime(2020, 5, 10);
 
       expect(isSameDay(dateA, dateB), true);

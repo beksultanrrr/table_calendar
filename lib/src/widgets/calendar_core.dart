@@ -168,14 +168,14 @@ class CalendarCore extends StatelessWidget {
 
     switch (format) {
       case CalendarFormat.month:
-        day = DateTime.utc(prevFocusedDay.year, prevFocusedDay.month + pageDif);
+        day = DateTime(prevFocusedDay.year, prevFocusedDay.month + pageDif);
         break;
       case CalendarFormat.twoWeeks:
-        day = DateTime.utc(prevFocusedDay.year, prevFocusedDay.month,
+        day = DateTime(prevFocusedDay.year, prevFocusedDay.month,
             prevFocusedDay.day + pageDif * 14);
         break;
       case CalendarFormat.week:
-        day = DateTime.utc(prevFocusedDay.year, prevFocusedDay.month,
+        day = DateTime(prevFocusedDay.year, prevFocusedDay.month,
             prevFocusedDay.day + pageDif * 7);
         break;
     }
@@ -194,14 +194,14 @@ class CalendarCore extends StatelessWidget {
 
     switch (format) {
       case CalendarFormat.month:
-        day = DateTime.utc(firstDay.year, firstDay.month + pageIndex);
+        day = DateTime(firstDay.year, firstDay.month + pageIndex);
         break;
       case CalendarFormat.twoWeeks:
-        day = DateTime.utc(
+        day = DateTime(
             firstDay.year, firstDay.month, firstDay.day + pageIndex * 14);
         break;
       case CalendarFormat.week:
-        day = DateTime.utc(
+        day = DateTime(
             firstDay.year, firstDay.month, firstDay.day + pageIndex * 7);
         break;
     }
@@ -263,7 +263,7 @@ class CalendarCore extends StatelessWidget {
     final dayCount = last.difference(first).inDays + 1;
     return List.generate(
       dayCount,
-      (index) => DateTime.utc(first.year, first.month, first.day + index),
+      (index) => DateTime(first.year, first.month, first.day + index),
     );
   }
 
@@ -273,13 +273,13 @@ class CalendarCore extends StatelessWidget {
   }
 
   DateTime _firstDayOfMonth(DateTime month) {
-    return DateTime.utc(month.year, month.month, 1);
+    return DateTime(month.year, month.month, 1);
   }
 
   DateTime _lastDayOfMonth(DateTime month) {
     final date = month.month < 12
-        ? DateTime.utc(month.year, month.month + 1, 1)
-        : DateTime.utc(month.year + 1, 1, 1);
+        ? DateTime(month.year, month.month + 1, 1)
+        : DateTime(month.year + 1, 1, 1);
     return date.subtract(const Duration(days: 1));
   }
 

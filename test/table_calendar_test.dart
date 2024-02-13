@@ -11,10 +11,10 @@ import 'package:table_calendar/table_calendar.dart';
 
 import 'common.dart';
 
-final initialFocusedDay = DateTime.utc(2021, 7, 15);
+final initialFocusedDay = DateTime(2021, 7, 15);
 final today = initialFocusedDay;
-final firstDay = DateTime.utc(2021, 5, 15);
-final lastDay = DateTime.utc(2021, 9, 18);
+final firstDay = DateTime(2021, 5, 15);
+final lastDay = DateTime(2021, 9, 18);
 
 Widget setupTestWidget(Widget child) {
   return Directionality(
@@ -53,8 +53,8 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTableCalendar());
 
-        final firstVisibleDay = DateTime.utc(2021, 6, 27);
-        final lastVisibleDay = DateTime.utc(2021, 7, 31);
+        final firstVisibleDay = DateTime(2021, 6, 27);
+        final lastVisibleDay = DateTime(2021, 7, 31);
 
         final focusedDayKey = cellContentKey(initialFocusedDay);
         final firstVisibleDayKey = cellContentKey(firstVisibleDay);
@@ -96,8 +96,8 @@ void main() {
 
         expect(updatedFocusedDay, isNotNull);
 
-        final firstVisibleDay = DateTime.utc(2021, 7, 4);
-        final lastVisibleDay = DateTime.utc(2021, 7, 10);
+        final firstVisibleDay = DateTime(2021, 7, 4);
+        final lastVisibleDay = DateTime(2021, 7, 10);
 
         final focusedDayKey = cellContentKey(updatedFocusedDay!);
         final firstVisibleDayKey = cellContentKey(firstVisibleDay);
@@ -139,8 +139,8 @@ void main() {
 
         expect(updatedFocusedDay, isNotNull);
 
-        final firstVisibleDay = DateTime.utc(2021, 7, 18);
-        final lastVisibleDay = DateTime.utc(2021, 7, 24);
+        final firstVisibleDay = DateTime(2021, 7, 18);
+        final lastVisibleDay = DateTime(2021, 7, 24);
 
         final focusedDayKey = cellContentKey(updatedFocusedDay!);
         final firstVisibleDayKey = cellContentKey(firstVisibleDay);
@@ -182,8 +182,8 @@ void main() {
 
         expect(updatedFocusedDay, isNotNull);
 
-        final firstVisibleDay = DateTime.utc(2021, 6, 20);
-        final lastVisibleDay = DateTime.utc(2021, 7, 3);
+        final firstVisibleDay = DateTime(2021, 6, 20);
+        final lastVisibleDay = DateTime(2021, 7, 3);
 
         final focusedDayKey = cellContentKey(updatedFocusedDay!);
         final firstVisibleDayKey = cellContentKey(firstVisibleDay);
@@ -225,8 +225,8 @@ void main() {
 
         expect(updatedFocusedDay, isNotNull);
 
-        final firstVisibleDay = DateTime.utc(2021, 7, 18);
-        final lastVisibleDay = DateTime.utc(2021, 7, 31);
+        final firstVisibleDay = DateTime(2021, 7, 18);
+        final lastVisibleDay = DateTime(2021, 7, 31);
 
         final focusedDayKey = cellContentKey(updatedFocusedDay!);
         final firstVisibleDayKey = cellContentKey(firstVisibleDay);
@@ -312,7 +312,7 @@ void main() {
         expect(find.byType(CalendarHeader), findsOneWidget);
         expect(find.text(headerText), findsOneWidget);
 
-        final updatedFocusedDay = DateTime.utc(2021, 8, 4);
+        final updatedFocusedDay = DateTime(2021, 8, 4);
 
         await tester.pumpWidget(
           createTableCalendar(focusedDay: updatedFocusedDay),
@@ -421,7 +421,7 @@ void main() {
     testWidgets(
       '3 event markers are visible when 3 events are assigned to a given day',
       (tester) async {
-        final eventDay = DateTime.utc(2021, 7, 20);
+        final eventDay = DateTime(2021, 7, 20);
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(
@@ -484,8 +484,8 @@ void main() {
       'if currentDay is absent, DateTime.now() is marked as today',
       (tester) async {
         final now = DateTime.now();
-        final firstDay = DateTime.utc(now.year, now.month - 3, now.day);
-        final lastDay = DateTime.utc(now.year, now.month + 3, now.day);
+        final firstDay = DateTime(now.year, now.month - 3, now.day);
+        final lastDay = DateTime(now.year, now.month + 3, now.day);
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(
@@ -506,7 +506,7 @@ void main() {
     testWidgets(
       'selectedDayPredicate correctly marks given day as selected',
       (tester) async {
-        final selectedDay = DateTime.utc(2021, 7, 20);
+        final selectedDay = DateTime(2021, 7, 20);
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(
@@ -531,7 +531,7 @@ void main() {
     testWidgets(
       'holidayPredicate correctly marks given day as holiday',
       (tester) async {
-        final holiday = DateTime.utc(2021, 7, 20);
+        final holiday = DateTime(2021, 7, 20);
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(
@@ -596,7 +596,7 @@ void main() {
 
   group('Scrolling boundaries are set up properly:', () {
     testWidgets('starting scroll boundary works correctly', (tester) async {
-      final focusedDay = DateTime.utc(2021, 6, 15);
+      final focusedDay = DateTime(2021, 6, 15);
 
       await tester.pumpWidget(createTableCalendar(focusedDay: focusedDay));
 
@@ -613,7 +613,7 @@ void main() {
     });
 
     testWidgets('ending scroll boundary works correctly', (tester) async {
-      final focusedDay = DateTime.utc(2021, 8, 15);
+      final focusedDay = DateTime(2021, 8, 15);
 
       await tester.pumpWidget(createTableCalendar(focusedDay: focusedDay));
 
@@ -727,7 +727,7 @@ void main() {
 
         expect(selectedDay, isNull);
 
-        final tappedDay = DateTime.utc(2021, 7, 18);
+        final tappedDay = DateTime(2021, 7, 18);
         final tappedDayKey = cellContentKey(tappedDay);
 
         await tester.tap(find.byKey(tappedDayKey));
@@ -755,7 +755,7 @@ void main() {
 
         expect(focusedDay, isNull);
 
-        final tappedDay = DateTime.utc(2021, 7, 18);
+        final tappedDay = DateTime(2021, 7, 18);
         final tappedDayKey = cellContentKey(tappedDay);
 
         await tester.tap(find.byKey(tappedDayKey));
@@ -786,10 +786,10 @@ void main() {
         expect(selectedDay, isNull);
         expect(focusedDay, isNull);
 
-        final tappedDay = DateTime.utc(2021, 6, 30);
+        final tappedDay = DateTime(2021, 6, 30);
         final tappedDayKey = cellContentKey(tappedDay);
 
-        final expectedFocusedDay = DateTime.utc(2021, 7, 1);
+        final expectedFocusedDay = DateTime(2021, 7, 1);
 
         await tester.tap(find.byKey(tappedDayKey));
         await tester.pumpAndSettle();
@@ -806,10 +806,10 @@ void main() {
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(
-            focusedDay: DateTime.utc(2021, 8, 16),
+            focusedDay: DateTime(2021, 8, 16),
             firstDay: firstDay,
             lastDay: lastDay,
-            currentDay: DateTime.utc(2021, 8, 16),
+            currentDay: DateTime(2021, 8, 16),
             onDaySelected: (selected, focused) {
               selectedDay = selected;
               focusedDay = focused;
@@ -820,10 +820,10 @@ void main() {
         expect(selectedDay, isNull);
         expect(focusedDay, isNull);
 
-        final tappedDay = DateTime.utc(2021, 9, 1);
+        final tappedDay = DateTime(2021, 9, 1);
         final tappedDayKey = cellContentKey(tappedDay);
 
-        final expectedFocusedDay = DateTime.utc(2021, 8, 31);
+        final expectedFocusedDay = DateTime(2021, 8, 31);
 
         await tester.tap(find.byKey(tappedDayKey));
         await tester.pumpAndSettle();
@@ -853,7 +853,7 @@ void main() {
 
         expect(selectedDay, isNull);
 
-        final longPressedDay = DateTime.utc(2021, 7, 18);
+        final longPressedDay = DateTime(2021, 7, 18);
         final longPressedDayKey = cellContentKey(longPressedDay);
 
         await tester.longPress(find.byKey(longPressedDayKey));
@@ -881,7 +881,7 @@ void main() {
 
         expect(focusedDay, isNull);
 
-        final longPressedDay = DateTime.utc(2021, 7, 18);
+        final longPressedDay = DateTime(2021, 7, 18);
         final longPressedDayKey = cellContentKey(longPressedDay);
 
         await tester.longPress(find.byKey(longPressedDayKey));
@@ -912,10 +912,10 @@ void main() {
         expect(selectedDay, isNull);
         expect(focusedDay, isNull);
 
-        final longPressedDay = DateTime.utc(2021, 6, 30);
+        final longPressedDay = DateTime(2021, 6, 30);
         final longPressedDayKey = cellContentKey(longPressedDay);
 
-        final expectedFocusedDay = DateTime.utc(2021, 7, 1);
+        final expectedFocusedDay = DateTime(2021, 7, 1);
 
         await tester.longPress(find.byKey(longPressedDayKey));
         await tester.pumpAndSettle();
@@ -932,10 +932,10 @@ void main() {
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(
-            focusedDay: DateTime.utc(2021, 8, 16),
+            focusedDay: DateTime(2021, 8, 16),
             firstDay: firstDay,
             lastDay: lastDay,
-            currentDay: DateTime.utc(2021, 8, 16),
+            currentDay: DateTime(2021, 8, 16),
             onDayLongPressed: (selected, focused) {
               selectedDay = selected;
               focusedDay = focused;
@@ -946,10 +946,10 @@ void main() {
         expect(selectedDay, isNull);
         expect(focusedDay, isNull);
 
-        final longPressedDay = DateTime.utc(2021, 9, 1);
+        final longPressedDay = DateTime(2021, 9, 1);
         final longPressedDayKey = cellContentKey(longPressedDay);
 
-        final expectedFocusedDay = DateTime.utc(2021, 8, 31);
+        final expectedFocusedDay = DateTime(2021, 8, 31);
 
         await tester.longPress(find.byKey(longPressedDayKey));
         await tester.pumpAndSettle();
@@ -986,8 +986,8 @@ void main() {
         expect(rangeEnd, isNull);
         expect(focusedDay, isNull);
 
-        final firstTappedDay = DateTime.utc(2021, 7, 8);
-        final secondTappedDay = DateTime.utc(2021, 7, 21);
+        final firstTappedDay = DateTime(2021, 7, 8);
+        final secondTappedDay = DateTime(2021, 7, 21);
 
         final firstTappedDayKey = cellContentKey(firstTappedDay);
         final secondTappedDayKey = cellContentKey(secondTappedDay);
@@ -1030,8 +1030,8 @@ void main() {
         expect(rangeEnd, isNull);
         expect(focusedDay, isNull);
 
-        final firstTappedDay = DateTime.utc(2021, 7, 14);
-        final secondTappedDay = DateTime.utc(2021, 7, 7);
+        final firstTappedDay = DateTime(2021, 7, 14);
+        final secondTappedDay = DateTime(2021, 7, 7);
 
         final firstTappedDayKey = cellContentKey(firstTappedDay);
         final secondTappedDayKey = cellContentKey(secondTappedDay);
@@ -1081,8 +1081,8 @@ void main() {
         expect(focusedDay, isNull);
         expect(selectedDay, isNull);
 
-        final firstTappedDay = DateTime.utc(2021, 7, 8);
-        final secondTappedDay = DateTime.utc(2021, 7, 21);
+        final firstTappedDay = DateTime(2021, 7, 8);
+        final secondTappedDay = DateTime(2021, 7, 21);
 
         final firstTappedDayKey = cellContentKey(firstTappedDay);
         final secondTappedDayKey = cellContentKey(secondTappedDay);
@@ -1136,8 +1136,8 @@ void main() {
         expect(focusedDay, isNull);
         expect(selectedDay, isNull);
 
-        final firstTappedDay = DateTime.utc(2021, 7, 8);
-        final secondTappedDay = DateTime.utc(2021, 7, 21);
+        final firstTappedDay = DateTime(2021, 7, 8);
+        final secondTappedDay = DateTime(2021, 7, 21);
 
         final firstTappedDayKey = cellContentKey(firstTappedDay);
         final secondTappedDayKey = cellContentKey(secondTappedDay);
@@ -1191,8 +1191,8 @@ void main() {
         expect(focusedDay, isNull);
         expect(selectedDay, isNull);
 
-        final firstTappedDay = DateTime.utc(2021, 7, 8);
-        final secondTappedDay = DateTime.utc(2021, 7, 21);
+        final firstTappedDay = DateTime(2021, 7, 8);
+        final secondTappedDay = DateTime(2021, 7, 21);
 
         final firstTappedDayKey = cellContentKey(firstTappedDay);
         final secondTappedDayKey = cellContentKey(secondTappedDay);
@@ -1246,8 +1246,8 @@ void main() {
         expect(focusedDay, isNull);
         expect(selectedDay, isNull);
 
-        final firstTappedDay = DateTime.utc(2021, 7, 8);
-        final secondTappedDay = DateTime.utc(2021, 7, 21);
+        final firstTappedDay = DateTime(2021, 7, 8);
+        final secondTappedDay = DateTime(2021, 7, 21);
 
         final firstTappedDayKey = cellContentKey(firstTappedDay);
         final secondTappedDayKey = cellContentKey(secondTappedDay);
@@ -1273,8 +1273,8 @@ void main() {
     testWidgets(
       'range selection has correct start and end point',
       (tester) async {
-        final rangeStart = DateTime.utc(2021, 7, 8);
-        final rangeEnd = DateTime.utc(2021, 7, 21);
+        final rangeStart = DateTime(2021, 7, 8);
+        final rangeEnd = DateTime(2021, 7, 21);
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(
@@ -1308,8 +1308,8 @@ void main() {
     testWidgets(
       'days within range selection are marked as inWithinRange',
       (tester) async {
-        final rangeStart = DateTime.utc(2021, 7, 8);
-        final rangeEnd = DateTime.utc(2021, 7, 13);
+        final rangeStart = DateTime(2021, 7, 8);
+        final rangeEnd = DateTime(2021, 7, 13);
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(
@@ -1343,8 +1343,8 @@ void main() {
     testWidgets(
       'days outside range selection are not marked as inWithinRange',
       (tester) async {
-        final rangeStart = DateTime.utc(2021, 7, 8);
-        final rangeEnd = DateTime.utc(2021, 7, 13);
+        final rangeStart = DateTime(2021, 7, 8);
+        final rangeEnd = DateTime(2021, 7, 13);
 
         await tester.pumpWidget(setupTestWidget(
           TableCalendar(

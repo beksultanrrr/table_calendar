@@ -336,13 +336,13 @@ class _TableCalendarBaseState extends State<TableCalendarBase> {
   }
 
   DateTime _firstDayOfMonth(DateTime month) {
-    return DateTime.utc(month.year, month.month, 1);
+    return DateTime(month.year, month.month, 1);
   }
 
   DateTime _lastDayOfMonth(DateTime month) {
     final date = month.month < 12
-        ? DateTime.utc(month.year, month.month + 1, 1)
-        : DateTime.utc(month.year + 1, 1, 1);
+        ? DateTime(month.year, month.month + 1, 1)
+        : DateTime(month.year + 1, 1, 1);
     return date.subtract(const Duration(days: 1));
   }
 }
