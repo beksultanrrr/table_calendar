@@ -91,7 +91,7 @@ class TableCalendar<T> extends StatefulWidget {
   /// Determines the visibility of calendar header.
   final bool headerVisible;
 
-  final bool isScorable;
+
 
   /// Determines the visibility of the row of days of the week.
   final bool daysOfWeekVisible;
@@ -221,7 +221,7 @@ class TableCalendar<T> extends StatefulWidget {
     required this.elementsDate,
     required this.firstDay,
     required DateTime lastDay,
-    required this.isScorable,
+
     required this.firstDayOfPreviousMonth,
     DateTime? currentDay,
     this.locale,
@@ -299,7 +299,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
     _focusedDay = ValueNotifier(widget.focusedDay);
     _rangeSelectionMode = widget.rangeSelectionMode;
     setState(() {
-      print(widget.selectedDate!);
+    
     });
   }
 
@@ -426,10 +426,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
       _focusedDay.value = day;
     }
 
-    // setState(() {
-    //   print("SELECTED ${_focusedDay.value}");
-    //   print("SDSDSDS ${day.}");
-    // });
+  
   }
 
   bool _isDayOnRight(DateTime selectedDay) {
@@ -467,37 +464,9 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
     int selectedPage = await determinePageNumber(selectedDate, widget.firstDayOfPreviousMonth!);
     _pageController.jumpToPage(selectedPage);
   }
-  // DateTime? _previousSelectedDay;
-  // void onScroll(DateTime selectedDate) async {
-  //   final selectedDay = await selectedDate;
-  //   if (_previousSelectedDay != null) {
-  //     if (selectedDay.isAfter(_previousSelectedDay!)) {
-  //       final previousDay = selectedDay.subtract(Duration(days: 1));
-  //       if (selectedDay.weekday == DateTime.monday && previousDay.weekday == DateTime.sunday) {
-  //         await _pageController.nextPage(
-  //           duration: Duration(microseconds: 1),
-  //           curve: widget.pageAnimationCurve,
-  //         );
-  //       }
-  //       print('Дата увеличивается');
-  //     } else if (selectedDay.isBefore(_previousSelectedDay!)) {
-  //       final nextDay = selectedDay.add(Duration(days: 1));
-  //       if (selectedDay.weekday == DateTime.sunday && nextDay.weekday == DateTime.monday) {
-  //         await _pageController.previousPage(
-  //           duration: Duration(microseconds: 1),
-  //           curve: widget.pageAnimationCurve,
-  //         );
-  //       }
-  //       print('Дата уменьшается');
-  //     }
-  //   }
-
-  //   _previousSelectedDay = selectedDay;
-  // }
 
   @override
   Widget build(BuildContext context) {
-    int differenceInDays = widget.selectedDate!.difference(widget.firstDay).inDays;
     return Column(
       children: [
         if (widget.headerVisible)
