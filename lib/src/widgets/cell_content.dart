@@ -69,13 +69,47 @@ class CellContent extends StatelessWidget {
       cell = calendarBuilders.selectedBuilder?.call(context, day, focusedDay) ??
           AnimatedContainer(
             duration: duration,
-            margin: margin,
+            margin: margin, 
             padding: padding,
             decoration: calendarStyle.selectedDecoration,
             alignment: alignment,
             child: Text(text, style: calendarStyle.selectedTextStyle),
           );
-    } else if (highlightedDates.contains(day)) {
+    } else if (isToday && isTodayHighlighted && highlightedDates.contains(day.toLocal().subtract(
+        Duration(hours: day.toLocal().hour, minutes: day.toLocal().minute, seconds: day.toLocal().second, milliseconds: day.toLocal().millisecond, microseconds: day.toLocal().microsecond)))) {
+      cell = calendarBuilders.todayBuilder?.call(context, day, focusedDay) ??
+          AnimatedContainer(
+            duration: duration,
+            margin: margin,
+            padding: padding,
+            decoration: calendarStyle.todayDecoration,
+            alignment: alignment,
+            child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  text,
+                  style: calendarStyle.outsideTextStyle,
+                ),
+              ],
+            ),
+            Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xFF4B39EF)),
+                  width: 5,
+                  height: 5,
+                )),
+          ],
+        ),
+          );
+    } else if (highlightedDates.contains(day.toLocal().subtract(
+        Duration(hours: day.toLocal().hour, minutes: day.toLocal().minute, seconds: day.toLocal().second, milliseconds: day.toLocal().millisecond, microseconds: day.toLocal().microsecond)))) {
       cell = AnimatedContainer(
         duration: duration,
         margin: margin,
@@ -124,16 +158,6 @@ class CellContent extends StatelessWidget {
             decoration: calendarStyle.rangeEndDecoration,
             alignment: alignment,
             child: Text(text, style: calendarStyle.rangeEndTextStyle),
-          );
-    } else if (isToday && isTodayHighlighted) {
-      cell = calendarBuilders.todayBuilder?.call(context, day, focusedDay) ??
-          AnimatedContainer(
-            duration: duration,
-            margin: margin,
-            padding: padding,
-            decoration: calendarStyle.todayDecoration,
-            alignment: alignment,
-            child: Text(text, style: calendarStyle.todayTextStyle),
           );
     } else if (isHoliday) {
       cell = calendarBuilders.holidayBuilder?.call(context, day, focusedDay) ??
@@ -187,4 +211,3 @@ class CellContent extends StatelessWidget {
     );
   }
 }
-
